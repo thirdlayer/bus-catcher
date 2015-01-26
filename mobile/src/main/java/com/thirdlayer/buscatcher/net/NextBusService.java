@@ -1,5 +1,9 @@
 package com.thirdlayer.buscatcher.net;
 
+import com.thirdlayer.buscatcher.pojos.Route;
+
+import java.util.ArrayList;
+
 import retrofit.http.GET;
 
 /**
@@ -8,6 +12,8 @@ import retrofit.http.GET;
 public interface NextBusService {
     //TODO: Add retry based on nextbus xml error value
     // http://www.nextbus.com/xmlFeedDocs/NextBusXMLFeed.pdf
+
     @GET("http://webservices.nextbus.com/service/publicXMLFeed?command=routeList&a=sf-muni")
+    public ArrayList<Route> getAllRoutes();
 
 }

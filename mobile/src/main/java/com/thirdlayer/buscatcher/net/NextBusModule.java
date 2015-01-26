@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import retrofit.RestAdapter;
+import retrofit.converter.SimpleXMLConverter;
 
 /**
  * Created by harry on 1/25/15.
@@ -19,6 +20,7 @@ public class NextBusModule {
     @Provides @Singleton public NextBusService provideNextBusService() {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint("http://webservices.nextbus.com/service/publicXMLFeed?command=")
+                .setConverter(new SimpleXMLConverter())
                 .build();
         return restAdapter.create(NextBusService.class);
     }

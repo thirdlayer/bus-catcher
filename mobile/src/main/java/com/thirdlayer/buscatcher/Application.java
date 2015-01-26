@@ -25,7 +25,7 @@ public class Application extends android.app.Application {
     public void onCreate() {
         super.onCreate();
         objectGraph = ObjectGraph.create(getModules().toArray());
-        objectGraph.inject(this)
+        objectGraph.inject(this);
 
     }
 
