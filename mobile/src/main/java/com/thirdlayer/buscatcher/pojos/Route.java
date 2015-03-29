@@ -1,26 +1,18 @@
 package com.thirdlayer.buscatcher.pojos;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Root;
+
 /**
  * Pojo representation of the Route object available on the NextBus xml feed.
  */
+@Root(name = "route")
 public class Route {
-
-    private String title;
+    @Attribute(name = "tag")
     private String tag;
 
-    public String getTitle() {
-        return title;
-    }
+    @Attribute(name = "title")
+    private String title;
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
-    }
+    public Route() {}
 }

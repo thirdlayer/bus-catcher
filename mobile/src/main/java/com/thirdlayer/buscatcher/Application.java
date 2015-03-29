@@ -1,7 +1,5 @@
 package com.thirdlayer.buscatcher;
 
-import android.os.Bundle;
-
 import com.thirdlayer.buscatcher.net.NextBusModule;
 import com.thirdlayer.buscatcher.net.NextBusService;
 
@@ -25,13 +23,13 @@ public class Application extends android.app.Application {
     public void onCreate() {
         super.onCreate();
         objectGraph = ObjectGraph.create(getModules().toArray());
-        objectGraph.inject(this);
-
     }
 
     private List<Object> getModules() {
-        return Arrays.<Object>asList(new ApplicationModule(this));
+        return Arrays.<Object>asList(new NextBusModule());
     }
 
-
+    public void inject(Object object) {
+        objectGraph.inject(object);
+    }
 }

@@ -1,5 +1,7 @@
 package com.thirdlayer.buscatcher.net;
 
+import com.thirdlayer.buscatcher.activities.MainActivity;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -12,14 +14,14 @@ import retrofit.converter.SimpleXMLConverter;
  */
 @Module(
         injects = {
-                NextBusService.class
+                MainActivity.class
         }
 )
 public class NextBusModule {
 
     @Provides @Singleton public NextBusService provideNextBusService() {
         RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint("http://webservices.nextbus.com/service/publicXMLFeed?command=")
+                .setEndpoint("http://webservices.nextbus.com/service")
                 .setConverter(new SimpleXMLConverter())
                 .build();
         return restAdapter.create(NextBusService.class);
