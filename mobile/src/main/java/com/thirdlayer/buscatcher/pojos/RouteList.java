@@ -5,20 +5,30 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
-import java.util.List;
+import io.realm.RealmList;
+import io.realm.RealmObject;
 
-/**
- * Created by harry on 3/29/15.
- */
 @Root(name = "body")
-public class RouteList {
+public class RouteList extends RealmObject {
     @ElementList(name = "route", inline=true)
-    private List<Route> routes;
+    private RealmList<Route> routes;
 
     @Attribute(name = "copyright")
     private String copyright;
 
-    public List<Route> getRoutes() {
+    public RealmList<Route> getRoutes() {
         return routes;
+    }
+
+    public void setRoutes(RealmList<Route> routes) {
+        this.routes = routes;
+    }
+
+    public String getCopyright() {
+        return copyright;
+    }
+
+    public void setCopyright(String copyright) {
+        this.copyright = copyright;
     }
 }

@@ -1,35 +1,22 @@
 package com.thirdlayer.buscatcher;
 
 import com.thirdlayer.buscatcher.net.NextBusModule;
-import com.thirdlayer.buscatcher.net.NextBusService;
 
-import java.util.Arrays;
-import java.util.List;
-
-import javax.inject.Inject;
-
-import dagger.ObjectGraph;
-
-/**
- * Created by harry on 1/24/15.
- */
 public class Application extends android.app.Application {
-    private ObjectGraph objectGraph;
-
-    @Inject
-    NextBusService nextBusService;
+    private ApplicationComponent component;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        objectGraph = ObjectGraph.create(getModules().toArray());
+        this.component = DaggerApplicationComponent.builder()
+                .applicationModule(new ApplicationModule(this))
+                .nextBusModule(new NextBusModule())
+                .build();
+        component.application(this);
     }
 
-    private List<Object> getModules() {
-        return Arrays.<Object>asList(new NextBusModule());
+    ApplicationComponent getComponent() {
+        return component;
     }
 
-    public void inject(Object object) {
-        objectGraph.inject(object);
-    }
 }

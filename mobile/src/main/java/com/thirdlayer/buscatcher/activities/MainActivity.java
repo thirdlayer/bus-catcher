@@ -7,7 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.thirdlayer.buscatcher.R;
-import com.thirdlayer.buscatcher.net.NextBusService;
+//import com.thirdlayer.buscatcher.net.NextBusService;
 import com.thirdlayer.buscatcher.pojos.RouteList;
 
 import javax.inject.Inject;
@@ -17,7 +17,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 public class MainActivity extends BaseActivity {
-    @Inject NextBusService nextBusService;
+//    @Inject NextBusService nextBusService;
 
     private String routesText;
 
@@ -32,17 +32,17 @@ public class MainActivity extends BaseActivity {
         // Grab Views
         textView = (TextView) findViewById(R.id.hello);
 
-        nextBusService.getAllRoutes(new Callback<RouteList>() {
-            @Override
-            public void success(RouteList routes, Response response) {
-                textView.setText(routes.getRoutes().toString());
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_LONG).show();
-            }
-        });
+//        nextBusService.getAllRoutes(new Callback<RouteList>() {
+//            @Override
+//            public void success(RouteList routes, Response response) {
+//                textView.setText(routes.getRoutes().toString());
+//            }
+//
+//            @Override
+//            public void failure(RetrofitError error) {
+//                Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_LONG).show();
+//            }
+//        });
     }
 
 
